@@ -1,10 +1,3 @@
-/*
-
-	resources on how to make a patch request in javascript:
-	https://postsrc.com/code-snippets/how-to-make-patch-request-with-fetch-api
- 
-*/
-
 function selectImage(img){ 
 	var selectedPhoto = document.getElementById("selectedImage")
 	selectedPhoto.src = img.src
