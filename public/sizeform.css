@@ -1,0 +1,12 @@
+.collapsible input{
+	width: 100%;
+	margin-bottom: 13px;
+}
+
+.collapsible{
+	padding: 30px;
+	display: none;
+	height: 0px;;
+	width: 100px;
+	transition: height 2s;
+}

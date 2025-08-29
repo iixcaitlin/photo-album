@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link href="./photo.css" rel="stylesheet" type="text/css">
+	<link href = "./sizeform.css" rel = "stylesheet" type = "text/css">
+	<link href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap" rel="stylesheet">
+	
+</head>
+
+
+<body>
+
+	<div id = "form">
+		<form action="/uploadpicture" method="post" enctype="multipart/form-data" >
+			<label for = "image">image: </label><br>
+			<input type= "file" name="image"><br>
+			
+			<label for = "title">title: </label><br>
+			<input type = "text" name="title" id = "title" maxlength = "30"><br>
+			
+			<label for = "description">description: </label><br>
+			<input type = "text" name="description" id = "description" maxlength = "100"><br>
+			
+			<label for = "location">location: </label><br>
+			<input type = "text" name="location" id = "location" maxlength = "75"><br>
+
+			<label for = "width">width: </label></br>
+			<input type = "number" name = "width" id = width maxlenth = "4"></br>
+
+			<label for = "length">length: </label></br>
+			<input type = "number" name = "length" id = length maxlength = "4"></br>
+			
+			<input type="submit" name="submitbutton" value="Submit">
+		</form>
+	</div>
+
+	
+	<div id ="app">
+	<h2>Portfolio</h2>
+	<hr size="2"/>
+	<div id="album">
+		<% for (let i=0; i<photos.length; i++) { %>
+		<div class = "image-box" data-id = <%=photos[i]._id%>  width=<%=photos[i].width%> height=<%=photos[i].length%> >
+			
+			<div contenteditable = "true" class = "location" oninput = "updateLocation(this)">
+				 ⟟ <%=photos[i].location%> 
+			</div>
+			<a class = "edit" onclick = "showSizeForm(this)" ><i class="fa-regular fa-pen-to-square"></i></a>
+			<a href = "/del/<%= photos[i]._id%>" class = "close"><i class="fa-solid fa-xmark"></i></a>
+
+				
+			<img class = "image" src = <%=photos[i].file%> width=<%=photos[i].width%> height=<%=photos[i].length%>  onclick= "selectImage(this)" >
+
+			<div contenteditable = "true" class = "title" oninput = "updateTitle(this)">
+				<%=photos[i].title %>
+			</div>
+			
+			<div contenteditable = "true" class = "description" oninput = "updateDescription(this)">
+				<%=photos[i].description %>
+			</div>
+
+			<div class = "collapsible">
+				<span>Width: </span>
+				<input class = "width" name = "width"><br>
+				<span>Height: </span>
+				<input class = "height" name = "height">
+				<input type="submit" onclick="updatesize(this)" value="Submit">
+			</div>
+
+		</div><!-- IMAGE-BOX -->
+		<% } %>
+		</div> <!--album -->
+
+		</div> <!--app-->
+		<div id = "popup" onclick = "hideImage(this)">
+			<img src = "" id = "selectedImage">
+		</div>
+
+		<script src="script.js"></script>
+</body>
+</html>
