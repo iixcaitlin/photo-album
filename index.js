@@ -1,39 +1,3 @@
-/*
-
-
-https://github.com/shubham-shinde/books/blob/master/CSS_SVG/CSS%20Secrets%20-%20Lea%20Verou.pdf
-
-http://xpzhang.me/teach/DS19_Fall/book.pdf
-
-
-========7/26/2023 Challenge========
-
-	Setup up the main page such that it'll display all the pictures we've uploaded. To achieve this:
- 
-	1st : query all the "photo" documents from mongoDB and pass them into the 'index.ejs template' 
- 				in the main page's get route function.
-		 
-	2nd : Use Ejs template code to create a bunch of 'image-box's. Where the <img>'s src attribute 
- 				contains the path to the actual image file in our 'uploads' folder. Your src path
-		 		should look something like this "image-743829748392748932imgname.png" and not "/uploads/image-743829748392748932imgname.png".
-		 		This is because express will package the files in 'public' and 'uploads' folder together.
-
-	3rd(IMPORTANT): Send the entire "uploads" folder to the client so that the client will have access to the image files.
- 			*you can achieve this the same way we sent the files in the 'public' folder aka use 'app.use(express.static() )'
-			you can use the browsers developlment tool and check the 'Sources' section for the existence of image files.
- 
- Resources: 
-
- 	Heres a helpful video I;ve found on Ejs
-
- https://www.youtube.com/watch?v=OaXjIWP3qLQ
-
- Its pretty comprehensive and covers alot of material from the EJS setup to project deployment. 
- you do NOT need to watch all of it  ( YOU CAN IF YOU WANT), just skip to the parts you need.
-
- have fun!
- 
-*/
 
 /*====== imports===== */
 
@@ -173,10 +137,6 @@ app.post("/uploadpicture", upload.single("image"), async (req, res) => {
 	res.redirect("/")
 })
 
-
-
-// anonymous function are these guys ---->   (param)=>{ }
-//start the server on port 3000 ( port 3000 is for general purpose)
 
 app.listen(3000, ()=>{
 	console.log("server start")
